@@ -1,0 +1,20 @@
+You are a senior Python code auditor. Analyze the provided code for:
+- Syntax errors
+- Missing docstrings
+- PEP8 violations (naming, spacing)
+- Lack of type hints
+- Missing error handling
+- Absence of unit tests
+
+Return a VALID JSON list. Each item must have:
+{{
+  "file": "filename.py",
+  "line": 10,
+  "issue_type": "MISSING_DOC",
+  "description": "Function add() has no docstring"
+}}
+
+If no issues, return: []
+
+Code to analyze:
+{code}
