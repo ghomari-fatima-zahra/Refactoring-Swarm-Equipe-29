@@ -1,6 +1,6 @@
-# 📁 INDEX COMPLET DU CODE - PROJET SWARM
+#  INDEX COMPLET DU CODE - PROJET SWARM
 
-## 🎯 FICHIERS PRINCIPAUX À OUVRIR
+## FICHIERS PRINCIPAUX À OUVRIR
 
 ### 1. Point d'entrée
 - **`main.py`** - Point d'entrée principal du système
@@ -43,7 +43,7 @@
 
 ---
 
-## 🗂️ STRUCTURE COMPLÈTE DU PROJET
+##  STRUCTURE COMPLÈTE DU PROJET
 
 ```
 swarm/
@@ -90,7 +90,7 @@ swarm/
 
 ---
 
-## 🔍 COMMENT OUVRIR LES FICHIERS DANS VOTRE IDE
+##  COMMENT OUVRIR LES FICHIERS DANS VOTRE IDE
 
 1. **Dans l'explorateur de fichiers** (panneau gauche) :
    - Cliquez sur le dossier `swarm`
@@ -117,7 +117,7 @@ swarm/
 
 ---
 
-## 🧪 COMMENT TESTER LE CODE
+##  COMMENT TESTER LE CODE
 
 ### 1. Vérifier l'environnement
 ```bash
@@ -148,7 +148,7 @@ python main.py --target_dir sandbox
 
 ---
 
-## ✅ ÉTAT ACTUEL
+##  ÉTAT ACTUEL
 
 - **sandbox/messy_code.py** contient `add` et `subtract` → cohérent avec **test_messy_code.py**.
 - Si les tests pytest passent, le swarm peut terminer sans boucler.
