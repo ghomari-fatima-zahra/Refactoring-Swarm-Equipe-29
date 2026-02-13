@@ -1,0 +1,48 @@
+Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.
+
+PROBLÈMES À CORRIGER:
+$issue_description
+
+CODE ORIGINAL (à modifier le moins possible):
+$original_code
+$expected_names_section
+
+RÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:
+
+1. CORRECTION MINIMALE:
+   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.
+   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.
+   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).
+
+2. PRÉSERVER LES NOMS:
+   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.
+   - Si le code original a "def add(...)" tu dois garder "add", pas "addition".
+   - Si le code original a "def subtract(...)" tu dois garder "subtract".
+   - Ne renomme jamais une fonction pour "corriger" - corrige seulement la syntaxe ou l'erreur indiquée.
+
+3. TYPES DE CORRECTIONS AUTORISÉES:
+
+   A) Erreurs de SYNTAXE:
+   - Ajouter une virgule manquante (ex: "def f(a b)" -> "def f(a, b)")
+   - Ajouter les deux-points manquants (ex: "def f(a, b)" -> "def f(a, b):")
+   - Fermer un guillemet ou une parenthèse
+   - Corriger l'indentation (4 espaces par niveau)
+
+   B) Erreurs LOGIQUES (à corriger quand listées dans les problèmes):
+   - Division par zéro: ajouter un test (ex: "if b == 0: return 0" ou lever une exception) avant la division
+   - Variable utilisée avant définition: déplacer l'assignation ou initialiser la variable avant son utilisation
+   - Fonction sans retour: ajouter "return ..." avec la valeur appropriée selon la logique de la fonction
+   - NoneType / AttributeError: ajouter un test (ex: "if x is None: return ...") avant d'utiliser x
+   - FileNotFoundError: utiliser try/except ou vérifier l'existence du fichier avant de l'ouvrir
+
+4. SI L'ERREUR EST "cannot import name 'X'":
+   - Cela signifie que le test attend une fonction nommée X mais le code ne l'a pas ou l'a sous un autre nom.
+   - Tu dois soit ajouter la fonction X si elle manque, soit garder le nom X (ne pas la renommer en autre chose).
+
+FORMAT DE SORTIE:
+- Retourne UNIQUEMENT le code Python corrigé, rien d'autre.
+- Pas d'explications, pas de markdown (pas de ```python).
+- Le code doit être syntaxiquement valide.
+- Le code doit être le CODE ORIGINAL avec uniquement les corrections minimales nécessaires.
+
+CORRECTION:
