@@ -607,5 +607,200 @@
       "output_response": "def calculate_sum(a, b):\n    return a + b",
       "syntax_valid": true
     }
+  },
+  {
+    "timestamp": "2026-02-24T13:10:25.876764",
+    "agent": "JudgeAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "GENERATION",
+    "status": "SUCCESS",
+    "details": {
+      "file_generated": "test_code_brouillon.py",
+      "module_tested": "code_brouillon",
+      "input_prompt": "Generate comprehensive tests for code_brouillon.py",
+      "output_response": "from code_brouillon import Calculer, division\n\ndef test_Calculer():\n    assert Calculer(2, 3) == 5\n    assert Calculer(10, 5) == 15\n    assert Calculer(0, 0) == 0\n\ndef test_division():\n    assert division(10, 2) == 5\n    assert division(20, 4) == 5\n    assert division(0, 1) == 0\n    assert division(10, 1) == 10"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:10:26.376421",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "SUCCESS",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 2 items\n\ntest_code_brouillon.py::test_Calculer PASSED                             [ 50%]\ntest_code_brouillon.py::test_division PASSED                             [100%]\n\n============================== 2 passed in 0.02s ==============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:13:43.952056",
+    "agent": "JudgeAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "GENERATION",
+    "status": "SUCCESS",
+    "details": {
+      "file_generated": "test_code_brouillon.py",
+      "module_tested": "code_brouillon",
+      "input_prompt": "Generate comprehensive tests for code_brouillon.py",
+      "output_response": "from code_brouillon import Calc, ADD_TAX\n\ndef test_Calc():\n    assert Calc(100, 0) == 100\n    assert Calc(100, 20) == 80\n    assert Calc(50, 10) == 45\n    assert Calc(200, 25) == 150\n\ndef test_ADD_TAX():\n    assert ADD_TAX(100) == 119\n    assert ADD_TAX(50) == 59.5\n    assert ADD_TAX(200) == 238\n    assert ADD_TAX(0) == 0"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:13:44.279716",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "SUCCESS",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 2 items\n\ntest_code_brouillon.py::test_Calc PASSED                                 [ 50%]\ntest_code_brouillon.py::test_ADD_TAX PASSED                              [100%]\n\n============================== 2 passed in 0.02s ==============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:38.276593",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.13s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:38.732395",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.12s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:39.185454",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.12s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:39.634210",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.13s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:40.115478",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.15s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:40.698079",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.15s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:41.246408",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.15s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:41.752429",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.13s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:42.278172",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.17s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:42.820546",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.17s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T13:15:43.358012",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local",
+      "test_file": "test_code_brouillon.py",
+      "input_prompt": "Execute pytest on test_code_brouillon.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\venv_test\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________ ERROR collecting sandbox/test_local/test_code_brouillon.py __________\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\nC:\\Users\\ma_be\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\..\\venv_test\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_code_brouillon.py:1: in <module>\n    from code_brouillon import Calc, ADD_TAX\nE     File \"C:\\Users\\ma_be\\Desktop\\Test_Bot_Prof\\Refactoring-Swarm-Equipe-29\\sandbox\\test_local\\code_brouillon.py\", line 5\nE       def Calc(p, d)\nE                     ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_code_brouillon.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.17s ===============================\n\n"
+    }
   }
 ]
