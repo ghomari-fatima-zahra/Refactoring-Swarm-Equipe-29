@@ -34,6 +34,7 @@ RÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:
    - Fonction sans retour: ajouter "return ..." avec la valeur appropriée selon la logique de la fonction
    - NoneType / AttributeError: ajouter un test (ex: "if x is None: return ...") avant d'utiliser x
    - FileNotFoundError: utiliser try/except ou vérifier l'existence du fichier avant de l'ouvrir
+   -corrige tous les erreur logique nécessaires 
 
 4. SI L'ERREUR EST "cannot import name 'X'":
    - Cela signifie que le test attend une fonction nommée X mais le code ne l'a pas ou l'a sous un autre nom.
@@ -43,6 +44,7 @@ FORMAT DE SORTIE:
 - Retourne UNIQUEMENT le code Python corrigé, rien d'autre.
 - Pas d'explications, pas de markdown (pas de ```python).
 - Le code doit être syntaxiquement valide.
+- Le code doit être logiquement valide.
 - Le code doit être le CODE ORIGINAL avec uniquement les corrections minimales nécessaires.
 
 CORRECTION:

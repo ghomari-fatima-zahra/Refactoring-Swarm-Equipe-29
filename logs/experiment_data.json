@@ -1,32 +1,32 @@
 [
   {
-    "timestamp": "2026-02-08T09:36:48.596294",
+    "timestamp": "2026-02-28T23:30:13.140348",
     "agent": "JudgeAgent",
     "model": "llama-3.3-70b-versatile",
     "action": "GENERATION",
     "status": "SUCCESS",
     "details": {
-      "file_generated": "test_messy_code.py",
-      "module_tested": "messy_code",
-      "input_prompt": "Generate comprehensive tests for messy_code.py",
-      "output_response": "from messy_code import check_grade\n\ndef test_check_grade():\n    assert check_grade(0) == \"Invalid\"\n    assert check_grade(25) == \"Fail\"\n    assert check_grade(50) == \"Pass\"\n    assert check_grade(75) == \"Excellent\"\n    assert check_grade(100) == \"Excellent\"\n    assert check_grade(-10) == \"Invalid\""
+      "file_generated": "test_bad_syntax.py",
+      "module_tested": "bad_syntax",
+      "input_prompt": "Generate comprehensive tests for bad_syntax.py",
+      "output_response": "from bad_syntax import calculate_sum\n\ndef test_calculate_sum():\n    assert calculate_sum(2, 3) == 5\n    assert calculate_sum(10, 5) == 15\n    assert calculate_sum(0, 0) == 0"
     }
   },
   {
-    "timestamp": "2026-02-08T09:36:51.218812",
+    "timestamp": "2026-02-28T23:30:18.334583",
     "agent": "JudgeAgent",
     "model": "pytest",
     "action": "DEBUG",
     "status": "FAILED",
     "details": {
       "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
-      "test_file": "test_messy_code.py",
-      "input_prompt": "Execute pytest on test_messy_code.py",
-      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_messy_code.py _________________\n..\\venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_messy_code.py:1: in <module>\n    from messy_code import check_grade\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\messy_code.py\", line 2\nE       if score > 0 and score < 50\nE                                  ^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_messy_code.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.97s ===============================\n\n"
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 1.65s ===============================\n\n"
     }
   },
   {
-    "timestamp": "2026-02-08T09:36:51.803270",
+    "timestamp": "2026-02-28T23:30:18.923592",
     "agent": "FixerAgent",
     "model": "llama-3.3-70b-versatile",
     "action": "FIX",
@@ -39,29 +39,29 @@
           "file": "messy_code.py",
           "line": 0,
           "issue_type": "TEST_FAILURE",
-          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_messy_code.py _________________\n..\\venv\\Lib\\site-p"
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
         }
       ],
-      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_messy_code.py _________________\n..\\venv\\Lib\\site-p\n\nCODE ORIGINAL (à modifier le moins possible):\ndef check_grade(score):\n    if score > 0 and score < 50\n        return \"Fail\"\n    elif score >= 50 and score < 75\n        return \"Pass\"\n    elif score > 75\n        return \"Excellent\"\n    else:\n        return \"Invalid\"\n    \n\n\nIMPORTANT - Le fichier de test ",
-      "output_response": "def check_grade(score):\n    if score > 0 and score < 50:\n        return \"Fail\"\n    elif score >= 50 and score < 75:\n        return \"Pass\"\n    elif score > 75:\n        return \"Excellent\"\n    else:\n        return \"Invalid\"",
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
       "syntax_valid": true
     }
   },
   {
-    "timestamp": "2026-02-08T09:36:53.762510",
+    "timestamp": "2026-02-28T23:30:25.303271",
     "agent": "JudgeAgent",
     "model": "pytest",
     "action": "DEBUG",
     "status": "FAILED",
     "details": {
       "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
-      "test_file": "test_messy_code.py",
-      "input_prompt": "Execute pytest on test_messy_code.py",
-      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 1 item\n\ntest_messy_code.py::test_check_grade FAILED                              [100%]\n\n================================== FAILURES ===================================\n______________________________ test_check_grade _______________________________\ntest_messy_code.py:7: in test_check_grade\n    assert check_grade(75) == \"Excellent\"\nE   AssertionError: assert 'Invalid' == 'Excellent'\nE     \nE     - Excellent\nE     + Invalid\n=========================== short test summary info ===========================\nFAILED test_messy_code.py::test_check_grade - AssertionError: assert 'Invalid...\n============================== 1 failed in 0.19s ==============================\n\n"
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.99s ===============================\n\n"
     }
   },
   {
-    "timestamp": "2026-02-08T09:36:54.130770",
+    "timestamp": "2026-02-28T23:30:25.723406",
     "agent": "FixerAgent",
     "model": "llama-3.3-70b-versatile",
     "action": "FIX",
@@ -74,25 +74,538 @@
           "file": "messy_code.py",
           "line": 0,
           "issue_type": "TEST_FAILURE",
-          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 1 item\n\ntest_messy_code.py::test_check_grade FAILED                              [100%]\n\n================================== FAILURES ===================================\n____________________________"
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
         }
       ],
-      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 1 item\n\ntest_messy_code.py::test_check_grade FAILED                              [100%]\n\n================================== FAILURES ===================================\n____________________________\n\nCODE ORIGINAL (à modifier le moins possible):\ndef check_grade(score):\n    if score > 0 and score < 50:\n        return \"Fail\"\n    elif score >= 50 and score < 75:\n        return \"Pass\"\n    elif score > 75:\n        return \"Excellent\"\n    else:\n        return \"Invalid\"\n\n\nIMPORTANT - Le fichier de test at",
-      "output_response": "def check_grade(score):\n    if score > 0 and score < 50:\n        return \"Fail\"\n    elif score >= 50 and score < 75:\n        return \"Pass\"\n    elif score >= 75:\n        return \"Excellent\"\n    else:\n        return \"Invalid\"",
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
       "syntax_valid": true
     }
   },
   {
-    "timestamp": "2026-02-08T09:36:55.598165",
+    "timestamp": "2026-02-28T23:30:33.027551",
     "agent": "JudgeAgent",
     "model": "pytest",
     "action": "DEBUG",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "details": {
       "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
-      "test_file": "test_messy_code.py",
-      "input_prompt": "Execute pytest on test_messy_code.py",
-      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 1 item\n\ntest_messy_code.py::test_check_grade PASSED                              [100%]\n\n============================== 1 passed in 0.08s ==============================\n\n"
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 1.42s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:33.870523",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:37.533469",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 1.00s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:38.053436",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:40.762661",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.78s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:41.103349",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:43.371636",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.55s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:43.872324",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:45.870408",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.54s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:46.161723",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:48.948743",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 1.06s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:49.318384",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:51.464891",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.58s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:51.778477",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:53.852047",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.62s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:54.234180",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\n============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site\n\nCODE ORIGINAL (à modifier le moins possible):\nx = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties ",
+      "output_response": "x = 10\n# Variable mal nommée, pas de docstring, logique inutile\ndef f(z):\n    if z > 0:\n        if z < 100:\n            return True\n    return False",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:30:56.341034",
+    "agent": "JudgeAgent",
+    "model": "pytest",
+    "action": "DEBUG",
+    "status": "FAILED",
+    "details": {
+      "target_dir": "C:\\Users\\HP\\Downloads\\swarm\\sandbox",
+      "test_file": "test_bad_syntax.py",
+      "input_prompt": "Execute pytest on test_bad_syntax.py",
+      "output_response": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-8.3.0, pluggy-1.6.0 -- C:\\Users\\HP\\Downloads\\swarm\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\HP\\Downloads\\swarm\nplugins: anyio-4.12.1\ncollecting ... collected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_________________ ERROR collecting sandbox/test_bad_syntax.py _________________\n..\\.venv\\Lib\\site-packages\\_pytest\\python.py:493: in importtestmodule\n    mod = import_path(\n..\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:582: in import_path\n    importlib.import_module(module_name)\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n..\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:174: in exec_module\n    exec(co, module.__dict__)\ntest_bad_syntax.py:1: in <module>\n    from bad_syntax import calculate_sum\nE     File \"C:\\Users\\HP\\Downloads\\swarm\\sandbox\\bad_syntax.py\", line 1\nE       def calculate_sum(a, b)  # Manque le deux-points\nE                                ^^^^^^^^^^^^^^^^^^^^^^^\nE   SyntaxError: expected ':'\n=========================== short test summary info ===========================\nERROR test_bad_syntax.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n============================== 1 error in 0.63s ===============================\n\n"
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:31:41.538080",
+    "agent": "JudgeAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "GENERATION",
+    "status": "SUCCESS",
+    "details": {
+      "file_generated": "test_logic_bug.py",
+      "module_tested": "logic_bug",
+      "input_prompt": "Generate comprehensive tests for logic_bug.py",
+      "output_response": "from logic_bug import count_down\nimport io\nimport sys\n\ndef test_count_down():\n    capturedOutput = io.StringIO() \n    sys.stdout = capturedOutput \n    count_down(5)\n    sys.stdout = sys.__stdout__ \n    assert capturedOutput.getvalue() != \"\""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:32:11.838052",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b)  # Manque le deux-points\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"cor",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:32:42.177302",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:33:12.866130",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:33:43.221409",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:34:15.743748",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:34:46.057856",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:35:16.411667",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:35:46.961826",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:36:20.401258",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
+    }
+  },
+  {
+    "timestamp": "2026-02-28T23:36:51.710491",
+    "agent": "FixerAgent",
+    "model": "llama-3.3-70b-versatile",
+    "action": "FIX",
+    "status": "SUCCESS",
+    "details": {
+      "file": "messy_code.py",
+      "issues_count": 1,
+      "issues": [
+        {
+          "file": "messy_code.py",
+          "line": 0,
+          "issue_type": "TEST_FAILURE",
+          "description": "Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)"
+        }
+      ],
+      "input_prompt": "Tu es un expert Python. Ta mission est de corriger UNIQUEMENT les problèmes listés, en modifiant le moins possible le code.\n\nPROBLÈMES À CORRIGER:\n- Ligne 0: TEST_FAILURE - Tests échoués. Erreur:\nTimeout: Les tests ont pris trop de temps (>30s)\n\nCODE ORIGINAL (à modifier le moins possible):\ndef calculate_sum(a, b):\n    return a + b\n\n\nRÈGLES OBLIGATOIRES - NE JAMAIS ENFREINDRE:\n\n1. CORRECTION MINIMALE:\n   - Modifie UNIQUEMENT les parties du code nécessaires pour corriger les problèmes listés.\n   - NE réécris PAS tout le fichier. NE remplace PAS le code par un autre programme.\n   - Conserve TOUT le reste du code inchangé (noms de fonctions, noms de variables, logique).\n\n2. PRÉSERVER LES NOMS:\n   - Garde EXACTEMENT les mêmes noms de fonctions que dans le CODE ORIGINAL.\n   - Si le code original a \"def add(...)\" tu dois garder \"add\", pas \"addition\".\n   - Si le code original a \"def subtract(...)\" tu dois garder \"subtract\".\n   - Ne renomme jamais une fonction pour \"corriger\" - corrige seuleme",
+      "output_response": "def calculate_sum(a, b):\n    return a + b",
+      "syntax_valid": true
     }
   }
 ]
